@@ -6,25 +6,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.rateModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
+const rate_controller_1 = require("./rate.controller");
+const rate_service_1 = require("./rate.service");
 const mongoose_1 = require("@nestjs/mongoose");
-const rate_module_1 = require("./rate/rate.module");
-const dotenv = require("dotenv");
-dotenv.config();
-let AppModule = class AppModule {
+const rate_model_1 = require("./rate.model");
+let rateModule = class rateModule {
 };
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
+exports.rateModule = rateModule;
+exports.rateModule = rateModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot(process.env.MONGODB_URL),
-            rate_module_1.rateModule,
+            mongoose_1.MongooseModule.forFeature([{ name: 'rate', schema: rate_model_1.rateSchema }]),
         ],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        controllers: [rate_controller_1.rateController],
+        providers: [rate_service_1.rateService]
     })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+], rateModule);
+//# sourceMappingURL=rate.module.js.map
