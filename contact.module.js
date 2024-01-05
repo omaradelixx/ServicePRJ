@@ -6,25 +6,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.contactModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
+const contact_controller_1 = require("./contact.controller");
+const contact_service_1 = require("./contact.service");
 const mongoose_1 = require("@nestjs/mongoose");
-const contact_module_1 = require("./contact/contact.module");
-const dotenv = require("dotenv");
-dotenv.config();
-let AppModule = class AppModule {
+const contact_model_1 = require("./contact.model");
+let contactModule = class contactModule {
 };
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
+exports.contactModule = contactModule;
+exports.contactModule = contactModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot(process.env.MONGODB_URL),
-            contact_module_1.contactModule,
+            mongoose_1.MongooseModule.forFeature([{ name: 'contact', schema: contact_model_1.contactSchema }]),
         ],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        controllers: [contact_controller_1.contactController],
+        providers: [contact_service_1.contactService]
     })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+], contactModule);
+//# sourceMappingURL=contact.module.js.map
