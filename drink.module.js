@@ -6,25 +6,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.DrinkModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
+const drink_controller_1 = require("./drink.controller");
+const drink_service_1 = require("./drink.service");
 const mongoose_1 = require("@nestjs/mongoose");
-const drink_module_1 = require("./drink/drink.module");
-const dotenv = require("dotenv");
-dotenv.config();
-let AppModule = class AppModule {
+const drink_model_1 = require("./drink.model");
+let DrinkModule = class DrinkModule {
 };
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
+exports.DrinkModule = DrinkModule;
+exports.DrinkModule = DrinkModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot(process.env.MONGODB_URL),
-            drink_module_1.DrinkModule,
+            mongoose_1.MongooseModule.forFeature([{ name: 'drink', schema: drink_model_1.drinkSchema }]),
         ],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        controllers: [drink_controller_1.drinkController],
+        providers: [drink_service_1.drinkService]
     })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+], DrinkModule);
+//# sourceMappingURL=drink.module.js.map

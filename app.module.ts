@@ -3,14 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { MongooseModule } from '@nestjs/mongoose';
-import { contactModule } from './contact/contact.module';
+import { DrinkModule } from './drink/drink.module';
 import * as dotenv from 'dotenv'; // Import dotenv
 dotenv.config();
 @Module({
   imports: [
     MongooseModule.forRoot(process.env.MONGODB_URL),
 
-    contactModule,
+    DrinkModule,
   ],
   controllers: [AppController],
   providers: [AppService],
